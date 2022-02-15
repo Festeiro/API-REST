@@ -1,0 +1,38 @@
+<div ng-controller="StudentController">
+	
+	<label>Nome: </label><input type="text" ng-model="student.name"/><br>
+	<label>Idade: </label><input type="number" ng-model="student.age" class="input-sm spacing"/> <br>
+	<label>Curso: </label>
+	<select ng-model="student.course">
+		<option ng-repeat="course in courses" >{{course}}</option>
+	</select> <br>
+	<label>Aluno Aconselhador: </label>
+	<select ng-model="student.advisor"
+		ng-options="student as (student.reg_number + ' - ' + student.name) for student in students track by student.reg_number"></select> <br>
+	<label>Departamento: </label>
+	<select ng-model="student.department"
+		ng-options="department as (department.dep_number + ' - ' + department.name) for department in departments track by department.dep_number"></select>
+	<br><br>
+	<button ng-click="save()" class="btn btn-sm btn-info">Save</button><br>
+	
+	<div style="margin-top:5px">
+		<truers-grid items="students" cols="cols" on-update="update" on-delete="delete"></truers-grid>
+	</div>
+	
+	<div style="flex: 50">
+		<h2> {{assistent.student.name}} PARTICIPA DO PROJETO:</h2>
+	
+		<h4>Adicionar novo:</h4>
+		
+		<label>Projeto: </label>
+		<select ng-model="assist.project"
+			ng-options="project as (project.projectNumber) for project in projects track by project.projectNumber"></select>
+		
+		<button ng-click="saveAssistent()" class="btn btn-sm btn-info">Save</button><br>
+		
+		<div style="margin-top:5px">
+			<truers-grid items="assistents" cols="assistCols" on-delete="deleteAssist"></truers-grid>
+		</div>	
+	</div>
+	
+</div>

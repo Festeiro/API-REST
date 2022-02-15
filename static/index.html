@@ -1,0 +1,46 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
+<script src="app.js"></script>
+<link rel="stylesheet" type="text/css" href="myappStyles/styles.css">
+
+<!-- SERVICES -->
+<script src="/services/studentService.js"></script>
+<script src="/services/departmentService.js"></script>
+<script src="/services/professorService.js"></script>
+<script src="/services/projectService.js"></script>
+<script src="/services/worksService.js"></script>
+<script src="/services/participatesService.js"></script>
+<script src="/services/assistentService.js"></script>
+
+<!-- TEMPLATES -->
+<script src="/templates/student/student.js"></script>
+<script src="/templates/department/department.js"></script>
+<script src="/templates/professor/professor.js"></script>
+<script src="/templates/project/project.js"></script>
+
+<!--  COMPONENTS -->
+<script src="components/truers-grid/truers-grid.js"></script>
+
+<head>
+	<title>UNIVERSITY OF TRUERS</title>
+</head>
+
+<body ng-app="myApp" ng-controller="AppController" ng-init="init()">
+
+	<div style="display:flex; margin: 20px 10px 20px 10px">
+		<div layout="column">
+			<h1>Selecione o módulo</h1>
+			<div flex="100" layout="row" style="margin-top:5px">
+				<button ng-repeat="entity in entities" ng-click="selectEntity(entity)"
+					style="margin:5px; padding:5px">
+					{{entity}}
+				</button>
+			</div>
+			
+			<div flex="100" ng-include="selectedEntityPath" style="margin-top:30px"></div>
+		</div>
+	</div>
+	
+</body>
+
+</html>

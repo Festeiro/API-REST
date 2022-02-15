@@ -1,0 +1,16 @@
+<table>
+	<tr>
+		<th ng-repeat="col in $ctrl.cols"
+			style="width: {{col.widthInPercentage">{{col.name}}
+		</th>
+		<th ng-if="$ctrl.onUpdate">Update</th>
+		<th ng-if="$ctrl.onDelete">Delete</th>
+	</tr>
+	<tr ng-repeat="item in $ctrl.items">
+		<td ng-repeat="col in $ctrl.cols"
+			style="width: {{col.widthInPercentage}}">{{ !col.isDate ? item[col.name] : (item[col.name] | date:'dd/MM/yyyy')}}</td>
+			
+		<td ng-if="$ctrl.onUpdate"><button ng-click="$ctrl.onUpdate(item)">Update</button></td>
+		<td ng-if="$ctrl.onDelete"><button ng-click="$ctrl.onDelete(item)">Delete</button></td>
+	</tr>
+</table>
